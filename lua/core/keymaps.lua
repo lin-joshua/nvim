@@ -19,4 +19,5 @@ keymap("v", "L", "$")
 -- File explorer (nvim-tree)
 vim.keymap.set("n", "<leader>t", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file tree" })
 vim.keymap.set("n", "<leader>T", "<cmd>NvimTreeFocus<CR>", { desc = "Focus file tree" })
+vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>", { desc = "Toggle Aerial" })
 

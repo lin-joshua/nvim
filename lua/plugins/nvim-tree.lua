@@ -11,6 +11,9 @@ return {
     "NvimTreeFindFile",
     "NvimTreeCollapse",
   },
+  keys = {
+    { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file tree" },
+  },
 
   -- Run before the plugin loads (important for netrw)
   init = function()
@@ -59,4 +62,3 @@ return {
     require("nvim-tree").setup(opts)
   end,
 }
-
