@@ -4,5 +4,4 @@ require("core.commands")
 
 require("config.lazy")
 
-vim.cmd[[colorscheme tokyonight]]
-vim.opt.termguicolors = true
+require("core.theme").setup()
