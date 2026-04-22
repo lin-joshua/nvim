@@ -31,11 +31,3 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 })
 
 vim.g.python3_host_prog = vim.fn.expand("~/.venvs/nvim/bin/python")
-
--- Molten configuratiosn
-vim.g.molten_virt_text_output = true
-vim.g.molten_wrap_output = true
-vim.g.molten_virt_text_max_lines = 12
-vim.g.molten_image_provider = "image.nvim"
-vim.g.molten_image_location = "virt"
-vim.g.molten_cover_empty_lines = false
