@@ -30,3 +30,4 @@ vim.api.nvim_create_autocmd('BufReadPost', {
   end,
 })
 
+vim.g.python3_host_prog = vim.fn.expand("~/.venvs/nvim/bin/python")
