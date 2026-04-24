@@ -61,7 +61,7 @@ local M = {}
 
 function M.setup()
   vim.o.background = "dark"
-  vim.cmd("colorscheme carbonfox")
+  vim.cmd("colorscheme catppuccin-mocha")
 end
 
 return M
