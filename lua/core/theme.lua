@@ -1,6 +1,6 @@
 local M = {}
 
-local active_scheme = nil
+local active_flavour = nil
 local timer = nil
 
 local function macos_is_dark()
@@ -12,18 +12,45 @@ local function macos_is_dark()
   return vim.v.shell_error == 0 and output:match("Dark") ~= nil
 end
 
+local function setup_catppuccin(flavour)
+  require("catppuccin").setup({
+    flavour = flavour,
+    transparent_background = true,
+
+    -- Optional, but usually desirable with terminal transparency:
+    float = {
+      transparent = true,
+      solid = false,
+    },
+
+    -- Optional: keeps sidebars/popups from becoming opaque.
+    integrations = {
+      nvimtree = true,
+      telescope = {
+        enabled = true,
+      },
+    },
+  })
+end
+
 local function apply()
   local is_dark = macos_is_dark()
   local background = is_dark and "dark" or "light"
-  local scheme = is_dark and "catppuccin-frappe" or "catppuccin-latte"
+  local flavour = is_dark and "frappe" or "latte"
 
-  if active_scheme == scheme and vim.o.background == background then
+  if active_flavour == flavour and vim.o.background == background then
     return
   end
 
   vim.o.background = background
-  vim.cmd("colorscheme " .. scheme)
-  active_scheme = scheme
+
+  setup_catppuccin(flavour)
+
+  -- Catppuccin's colorscheme name is just "catppuccin".
+  -- The flavour is configured above.
+  vim.cmd.colorscheme("catppuccin")
+
+  active_flavour = flavour
 end
 
 function M.setup()
