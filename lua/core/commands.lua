@@ -31,6 +31,6 @@ vim.api.nvim_create_user_command(
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown", "tex" },
   callback = function()
-    vim.opt_local.wrap = true
+    vim.opt_local.wrap = false
   end,
 })
