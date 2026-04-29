@@ -9,6 +9,7 @@ return {
     dependencies = {
       "mason-org/mason.nvim",
       "neovim/nvim-lspconfig",
+      "hrsh7th/cmp-nvim-lsp",
     },
     opts = {
       ensure_installed = {
@@ -31,7 +32,10 @@ return {
         },
       })
 
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
       vim.lsp.config("lua_ls", {
+        capabilities = capabilities,
         settings = {
           Lua = {
             diagnostics = {
@@ -50,7 +54,12 @@ return {
         },
       })
 
+      vim.lsp.config("pyright", {
+        capabilities = capabilities,
+      })
+
       vim.lsp.config("ruff", {
+        capabilities = capabilities,
         init_options = {
           settings = {
             configurationPreference = "filesystemFirst",
