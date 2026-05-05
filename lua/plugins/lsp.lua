@@ -14,7 +14,6 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
-        "pyright",
         "ruff",
       },
       automatic_enable = true,
@@ -52,10 +51,6 @@ return {
             },
           },
         },
-      })
-
-      vim.lsp.config("pyright", {
-        capabilities = capabilities,
       })
 
       vim.lsp.config("ruff", {
