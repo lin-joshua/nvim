@@ -2,11 +2,9 @@ local M = {}
 
 function M.setup()
     vim.o.background = "dark"
-    require("catppuccin").setup({
-        flavour = "mocha",
-    })
+    require("dracula").setup({})
 
-    vim.cmd.colorscheme("catppuccin")
+    vim.cmd.colorscheme("dracula")
 end
 
 return M
