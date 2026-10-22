@@ -5,7 +5,7 @@ vim.opt.wrap = false -- No line wrapping
 vim.opt.hlsearch = true -- Highlight search results
 vim.opt.termguicolors = true -- Enable true color support
 vim.opt.belloff = "all" -- Stop annoying bell sounds
-vim.opt.colorcolumn = "81" -- Visual ruler just past the 80-char limit
+vim.opt.colorcolumn = "101" -- Visual ruler just past the 100-char limit
 vim.opt.signcolumn = "yes" -- Always reserve the sign column so text doesn't shift
 
 -- Make tabs & indentation consistent
