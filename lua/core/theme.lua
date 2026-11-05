@@ -1,24 +1,29 @@
 local M = {}
 
--- Rex's "Merino" theme is GitHub's Primer palette
--- (merino-dark = GitHub Dark Default, merino-light = GitHub Light Default)
+-- Kanagawa, matching Ghostty (dark = Dragon, light = Lotus)
 local schemes = {
-    dark = "github_dark_default",
-    light = "github_light_default",
+    dark = "kanagawa-dragon",
+    light = "kanagawa-lotus",
 }
 
--- loading a github scheme flips 'background' itself; ignore those nested
+-- loading a kanagawa scheme flips 'background' itself; ignore those nested
 -- OptionSet events so dark/light don't ping-pong forever
 local switching = false
+-- kanagawa names every variant just "kanagawa", so remember what we applied
+local current
 
 local function apply(bg)
     switching = true
-    vim.cmd.colorscheme(schemes[bg or vim.o.background] or schemes.dark)
+    current = schemes[bg or vim.o.background] or schemes.dark
+    vim.cmd.colorscheme(current)
     switching = false
 end
 
 function M.setup()
-    require("github-theme").setup({})
+    require("kanagawa").setup({
+        -- no separate background behind line numbers / sign column
+        colors = { theme = { all = { ui = { bg_gutter = "none" } } } },
+    })
 
     -- nvim detects the terminal background, so this follows Rex's dark/light switch
     apply()
@@ -29,7 +34,7 @@ function M.setup()
             if switching then return end
             local bg = vim.v.option_new
             vim.schedule(function()
-                if vim.g.colors_name ~= schemes[bg] then apply(bg) end
+                if current ~= schemes[bg] then apply(bg) end
             end)
         end,
     })
